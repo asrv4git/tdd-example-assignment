@@ -30,5 +30,7 @@ public class StringCalculatorTest {
     @Test
     public void addPerformsValidAdditionForTwoNumbers(){
         Assertions.assertEquals(3,stringCalculator.add("1,2"));
+        Assertions.assertEquals(34,stringCalculator.add("12,22"));
+        Assertions.assertEquals(2,stringCalculator.add("0,2"));
     }
 }
