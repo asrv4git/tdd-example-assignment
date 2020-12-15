@@ -1,5 +1,7 @@
 package co.incubyte.tddexample;
 
+import java.util.Arrays;
+
 public class StringCalculator {
     public int add(String numbers){
         if(numbers.equals(""))
@@ -7,8 +9,10 @@ public class StringCalculator {
         else if(numbers.matches("^\\d+$"))
             return Integer.parseInt(numbers);
         else if(numbers.matches("^((\\d+,)+\\d+)$")){
-            String[] nums = numbers.split(",");
-            return Integer.parseInt(nums[0])+Integer.parseInt(nums[1]);
+            int result = Arrays.stream(numbers.split(","))
+                    .map(str->Integer.parseInt(str))
+                    .reduce(0,(a,b)->a+b);
+            return result;
         }
         return 0;
     }

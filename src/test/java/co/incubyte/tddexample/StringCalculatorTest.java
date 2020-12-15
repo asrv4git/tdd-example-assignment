@@ -33,4 +33,13 @@ public class StringCalculatorTest {
         Assertions.assertEquals(34,stringCalculator.add("12,22"));
         Assertions.assertEquals(2,stringCalculator.add("0,2"));
     }
+
+    @Test
+    public void addPerformsValidAdditionForUnknownAmountOfNumbers(){
+        Assertions.assertEquals(15,stringCalculator.add("1,2,3,4,5"));
+        Assertions.assertEquals(100,stringCalculator.add("100"));
+        Assertions.assertEquals(0,stringCalculator.add("0"));
+        Assertions.assertEquals(0,stringCalculator.add(""));
+        Assertions.assertEquals(200,stringCalculator.add("100,100"));
+    }
 }
