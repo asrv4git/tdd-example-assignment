@@ -6,10 +6,10 @@ import org.junit.jupiter.api.Test;
 
 public class StringCalculatorTest {
 
-    private StringCalculator stringCalculator;
+    private static StringCalculator stringCalculator;
 
     @BeforeAll
-    public void setup(){
+    public static void setup(){
         stringCalculator = new StringCalculator();
     }
 
@@ -17,6 +17,18 @@ public class StringCalculatorTest {
     public void addShouldReturnZeroForEmptyStringOfNumbers(){
         int actual = stringCalculator.add("");
         int expected = 0;
-        Assertions.assertEquals(actual,expected);
+        Assertions.assertEquals(expected,actual);
+    }
+
+    @Test
+    public void addReturnsTheSameNumberForInputStringWithOnlyOneNUmber(){
+        Assertions.assertEquals(1,stringCalculator.add("1"));
+        Assertions.assertEquals(124,stringCalculator.add("124"));
+        Assertions.assertEquals(0,stringCalculator.add("0"));
+    }
+
+    @Test
+    public void addPerformsValidAdditionForTwoNumbers(){
+        Assertions.assertEquals(3,stringCalculator.add("1,2"));
     }
 }
