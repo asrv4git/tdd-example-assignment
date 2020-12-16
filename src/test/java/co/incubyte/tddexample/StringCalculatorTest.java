@@ -65,8 +65,11 @@ public class StringCalculatorTest {
 
     @Test
     public void addShouldThrowExceptionWithNumbersInMessageForMultipleNegativeValues(){
-        Assertions.assertThrows(RuntimeException.class,()->stringCalculator.add("-10,-20"));
-        Assertions.assertEquals(150,stringCalculator.add("//;\n10;-20;-30;40;50"));
+        RuntimeException exception;
+        exception = Assertions.assertThrows(RuntimeException.class,()->stringCalculator.add("-10,20,30"));
+        Assertions.assertEquals(true,exception.getMessage().equalsIgnoreCase("negatives not allowed"));
+        exception = Assertions.assertThrows(RuntimeException.class,()->stringCalculator.add("//;\n10;-20;-30;40;50"));
+        Assertions.assertEquals(true,exception.getMessage().equals("-20,-30"));
     }
 
 
