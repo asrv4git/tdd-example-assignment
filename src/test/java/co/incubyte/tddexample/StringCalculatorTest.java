@@ -62,4 +62,12 @@ public class StringCalculatorTest {
     public void addShouldThrowExceptionWhenCalledForANegativeValue(){
         Assertions.assertThrows(RuntimeException.class,()->stringCalculator.add("-10"));
     }
+
+    @Test
+    public void addShouldThrowExceptionWithNumbersInMessageForMultipleNegativeValues(){
+        Assertions.assertThrows(RuntimeException.class,()->stringCalculator.add("-10,-20"));
+        Assertions.assertEquals(150,stringCalculator.add("//;\n10;-20;-30;40;50"));
+    }
+
+
 }
