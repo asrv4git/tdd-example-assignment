@@ -50,4 +50,11 @@ public class StringCalculatorTest {
         //invalid case
         Assertions.assertEquals(0,stringCalculator.add("10,\n,20,30\n40,500"));
     }
+
+    @Test
+    public void addShouldHandleCustomDelimiterDefinedAtTheStartOFInputString(){
+        Assertions.assertEquals(150,stringCalculator.add("//;\n10;20;30;40;50"));
+        Assertions.assertEquals(150,stringCalculator.add("// \n10 20 30 40 50"));
+        Assertions.assertEquals(150,stringCalculator.add("//.\n10.20.30.40.50"));
+    }
 }
