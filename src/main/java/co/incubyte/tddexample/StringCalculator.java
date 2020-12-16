@@ -8,8 +8,11 @@ public class StringCalculator {
     public int add(String numbers) {
         if (numbers.equals(""))
             return 0;
-        else if (numbers.matches("^\\d+$")) {
-            return Integer.parseInt(numbers);
+        else if (numbers.matches("-?\\d+")) {
+            int number = Integer.parseInt(numbers);
+            if(number<0)
+                throw new RuntimeException("negatives not allowed");
+            return number;
         }
         else if (numbers.matches("^((\\d+(,|\n))+\\d+)$")) {
             int result = Arrays.stream(numbers.split(","))
