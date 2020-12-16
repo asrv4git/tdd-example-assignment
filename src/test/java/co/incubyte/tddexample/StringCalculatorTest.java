@@ -46,5 +46,8 @@ public class StringCalculatorTest {
     @Test
     public void addShouldAlsoHandleNewLineBetweenNumbers(){
         Assertions.assertEquals(6,stringCalculator.add("1\n2,3"));
+        Assertions.assertEquals(15,stringCalculator.add("1,2,3\n4,5"));
+        //invalid case
+        Assertions.assertEquals(0,stringCalculator.add("10,\n,20,30\n40,500"));
     }
 }
