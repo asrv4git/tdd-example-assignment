@@ -42,4 +42,9 @@ public class StringCalculatorTest {
         Assertions.assertEquals(0,stringCalculator.add(""));
         Assertions.assertEquals(200,stringCalculator.add("100,100"));
     }
+
+    @Test
+    public void addShouldAlsoHandleNewLineBetweenNumbers(){
+        Assertions.assertEquals(6,stringCalculator.add("1\n2,3"));
+    }
 }
