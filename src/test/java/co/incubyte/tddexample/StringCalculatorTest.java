@@ -57,4 +57,9 @@ public class StringCalculatorTest {
         Assertions.assertEquals(150,stringCalculator.add("// \n10 20 30 40 50"));
         Assertions.assertEquals(150,stringCalculator.add("//.\n10.20.30.40.50"));
     }
+
+    @Test
+    public void addShouldThrowExceptionWhenCalledForANegativeValue(){
+        Assertions.assertThrows(RuntimeException.class,()->stringCalculator.add("-10"));
+    }
 }
